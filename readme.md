@@ -66,3 +66,5 @@
 5. Add a Debug node (under Output) to page and connect it to new Meshblu input node and double click on Debug node.
 
 6. Set output to message property msg.payload.image to debug tab.
+
+7. Click Deploy (top right). Congratulations!!!  Your LED should turn on when button is pressed and video snapshots should appear in your Debug tab on the right side of your page along with everyone else from your class!
