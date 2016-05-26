@@ -83,7 +83,7 @@ button.on("release", function() {
    - uncheck the broadcast checkbox
    - in "To a specific uuid" use: `1b22e194-942e-4a91-aba4-96873f05da71`
 
-4. Below the flow, add Meshblu node (under Input) and double click Meshblu node. Add broadcast from `1b22e194-942e-4a91-aba4-96873f05da71` and click OK.
+4. Below the flow, add Meshblu node (under Input) and double click Meshblu node. Uncheck Direct to Me. Add broadcast from `1b22e194-942e-4a91-aba4-96873f05da71` and click OK.
 
 5. Add a Debug node (under Output) to page and connect it to new Meshblu input node and double click on Debug node.
 
