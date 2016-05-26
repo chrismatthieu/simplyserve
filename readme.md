@@ -4,7 +4,7 @@
 
 1. Install Hardware Extention for PageNodes - https://chrome.google.com/webstore/detail/hardware-extension-for-pa/knmappkjdfbfdomfnbfhchnaamokjdpj?utm_source=chrome-ntp-launcher
 
-2. Wire LED on breadboard and connect to Arduino ![](led-resistor.png)
+2. Wire LED on breadboard and connect to Arduino ![](led-13.png)
 
 3. Plug Arduino into Chromebook
 
@@ -15,7 +15,7 @@
 6. Configure board:
   - Nodebot = Arduino/Firmata
   - Connection = Serial port
-  - Port = /dev/tty.usbmodem...
+  - Port = /dev/tty...
   - Name = Arduino 101
 
 7. Copy and paste this code into onReady:
@@ -33,6 +33,7 @@ led.blink();
 
 2. Double click on Johnny5 node again and copy/paste this code into onReady replacing your previous code:
 ```javascript
+var led = new five.Led(13);
 var button = new five.Button(2);
 
 button.on("hold", function() {
@@ -77,16 +78,15 @@ button.on("release", function() {
 
 2. Add Meshblu node (under Output) and connect it to camera node and double click Meshblu node.
 
-3. Edit Meshblu node and add the following data:
+3. Edit Meshblu node to add a new server:
+   - click the button to create a new uuid and token.
+   - uncheck the broadcast checkbox
+   - in "To a specific uuid" use: `1b22e194-942e-4a91-aba4-96873f05da71`
 
-  - UUID = aadb700c-874a-4655-be96-b1fe8400473d
-  - Token = d00b2d7aac13eec581a90d2d17127779ac166fcf
-  - click the checkbox on broadcast
-
-4. Below the flow, add Meshblu node (under Input) and double click Meshblu node. Add broadcast from aadb700c-874a-4655-be96-b1fe8400473d and click OK.
+4. Below the flow, add Meshblu node (under Input) and double click Meshblu node. Add broadcast from `1b22e194-942e-4a91-aba4-96873f05da71` and click OK.
 
 5. Add a Debug node (under Output) to page and connect it to new Meshblu input node and double click on Debug node.
 
-6. Set output to message property msg.payload.image to debug tab.
+6. Set output to complete message object to debug tab.
 
 7. Click Deploy (top right). Congratulations!!!  Your LED should turn on when button is pressed and video snapshots should appear in your Debug tab on the right side of your page along with everyone else from your class!
