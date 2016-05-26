@@ -4,7 +4,7 @@
 
 1. Install Hardware Extention for PageNodes - https://chrome.google.com/webstore/detail/hardware-extension-for-pa/knmappkjdfbfdomfnbfhchnaamokjdpj?utm_source=chrome-ntp-launcher
 
-2. Wire LED on breadboard and connect to Arduino ![](http://image.slidesharecdn.com/trevormcdonald-monitoringthephysicalworldwithnagiosandarduino-141022121006-conversion-gate02/95/nagios-conference-2014-trevor-mcdonald-monitoring-the-physical-world-with-nagios-and-arduino-10-638.jpg?cb=1413980127)
+2. Wire LED on breadboard and connect to Arduino ![](led-resistor.png)
 
 3. Plug Arduino into Chromebook
 
@@ -18,16 +18,38 @@
   - Port = /dev/tty.usbmodem...
   - Name = Arduino 101
 
-7. Copy and paste this code into onReady - https://gist.github.com/chrismatthieu/c66397a5ea8473b4effbe41284057c13
+7. Copy and paste this code into onReady:
+```javascript
+var led = new five.Led(13);
+led.blink();
+```
 
 8. Click Deploy (top right). Congratulations!!!  Your LED should start blinking!
 
 ## Add Push-To-Talk Button
 
 1. Wire button on breadboard and connect to Arduino
-![](https://github.com/rwaldron/johnny-five/raw/master/docs/breadboard/button.png)
+![](button_bb.png)
 
-2. Double click on Johnny5 node again and copy/paste this code into onReady replacing your previous code - https://gist.github.com/chrismatthieu/c0b3943039574f0030d1525e787964ee
+2. Double click on Johnny5 node again and copy/paste this code into onReady replacing your previous code:
+```javascript
+var button = new five.Button(2);
+
+button.on("hold", function() {
+  led.on();
+  node.send({payload:'hold'});
+});
+
+button.on("press", function() {
+  led.on();
+  node.send({payload:'on'});
+});
+
+button.on("release", function() {
+  led.off();
+  node.send({payload:'off'});
+});
+```
 
 3. Add a Debug node (under Output) to page and connect it to Johnny5 and double click on Debug node.
 
