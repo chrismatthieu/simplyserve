@@ -4,7 +4,7 @@
 
 1. Install Hardware Extention for PageNodes - https://chrome.google.com/webstore/detail/hardware-extension-for-pa/knmappkjdfbfdomfnbfhchnaamokjdpj?utm_source=chrome-ntp-launcher
 
-2. Wire LED on breadboard and connect to Arduino ![](led-13.png)
+2. Connect LED to Arduino ![](led-13.png)
 
 3. Plug Arduino into Chromebook
 
